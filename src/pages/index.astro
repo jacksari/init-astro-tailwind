@@ -1,16 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-console.log('init');
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+const response = await fetch("https://randomuser.me/api/");
+const data = await response.json();
+const randomUser = data.results[0];
+
+console.log("init", data);
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<h1 class="bg-red-300 p-2 text-center text-2xl">Welcome Jack</h1>
+  <main>
+    <h1 class="bg-red-300 p-2 text-center text-2xl">Welcome Jack</h1>
+
+	<div class="p-4 flex">
 		
-	</main>
+		<a href="/dogs/clifford" class="bg-red-400 text-white rounded px-3 py-1 mr-2">clifford</a>
+		
+		<a href="/dogs/rover" class="bg-red-400 text-white rounded px-3 py-1 mr-2">rover</a>
+		
+		<a href="/dogs/spot" class="bg-red-400 text-white rounded px-3 py-1 mr-2">spot</a>
+	</div>
+
+    <div class="p-4">
+      <h1>User</h1>
+      <h2>{randomUser.name.first} {randomUser.name.last}</h2>
+	  <h3>{ randomUser.email }</h3>
+    </div>
+  </main>
 </Layout>
 
-<style>
-
-</style>
+<style></style>

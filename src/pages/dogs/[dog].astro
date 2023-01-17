@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { dog: "clifford" } },
+    { params: { dog: "rover" } },
+    { params: { dog: "spot" } },
+  ];
+}
+
+const { dog } = Astro.params;
+---
+
+<Layout title={`Page dog: ${dog}`}>
+
+    <main class="container mx-auto p-4">
+        <div>Good dog, <span class="text-2xl font-bold text-red-500">{dog}</span>!</div>
+        
+        <div class="mt-2">
+            <a href="/" class="bg-red-400 text-white rounded px-3 py-1 mr-2 mt-2"
+            >home</a
+            >
+        </div>
+    </main>
+    
+</Layout>
